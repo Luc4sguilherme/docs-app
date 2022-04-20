@@ -1,0 +1,17 @@
+FROM node:16
+
+WORKDIR /usr/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN chown -R node /usr/app
+
+USER node
+
+CMD [ "npm", "start" ]
+
+EXPOSE 3333
